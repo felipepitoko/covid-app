@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a routerLink="/mortos-component" routerLinkActive="active" class="lateral">Mortos por Estado</a> <br>
+      <hr>
+      <a routerLink="/infectados-component" routerLinkActive="active" class="lateral" >Infectados por Estado</a> <br>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Estatísticas Covid-19 no Brasil</span>
+    </mat-toolbar>  
+    <h4>Total de Infectados: {{totalInfectados$ | async}} </h4>
+<h4>Total de mortos: {{totalMortos$ | async}}</h4>
+<hr>
+    
+  <router-outlet></router-outlet>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,7 @@
+<div>
+    <h4>Mortos por Estado</h4>
+    <ol *ngFor="let estadoM of mortosPorEstado$ | async">
+      <ul>Estado: {{estadoM.state}}</ul>
+      <ul>Total: {{estadoM.count}}</ul>
+    </ol>
+  </div>
